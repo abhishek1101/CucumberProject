@@ -1,0 +1,4 @@
+net\serenity\cucumber\pages\DictionaryPage.class
+net\serenity\cucumber\steps\serenity\EndUserSteps.class
+net\serenity\cucumber\DefinitionTestSuite.class
+net\serenity\cucumber\steps\DefinitionSteps.class
