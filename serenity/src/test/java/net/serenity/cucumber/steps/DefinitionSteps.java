@@ -10,29 +10,31 @@ import net.serenity.cucumber.steps.serenity.EndUserSteps;
 
 public class DefinitionSteps {
 
-    @Steps
-    EndUserSteps user;
+	@Steps
+	EndUserSteps user;
 
-    @Given("user launches '(.*)' browser")
-    public void givenUserLaunchesBrowser(String browserName) {
-    	if(browserName.toUpperCase().equals("CHROME")) {
-    		user.launchChromeBrowser();
-    	}
-    }
-    
-    @When("user navigates using URL '(.*)'")
-    public void whenUserNavigatesUsingUrl(String url) {
-    	user.navigateToUrl(url);
-    }
-    
-    @Then("user clicks on the link '(.*)'")
-    public void thenUserClicksOnTheLink(String link) {
-        user.clicksOnLinkByText(link);
-    }
-    
-    @And("user closes all the open browsers")
-    public void andUserClosesAllTheOpenBrowsers() {
-        user.closeAllBrowsers();
-    }
+	@Given("user launches '(.*)' browser")
+	public void givenUserLaunchesBrowser(String browserName) {
+		if (browserName.toUpperCase().equals("CHROME")) {
+			user.launchChromeBrowser();
+		} else if (browserName.toUpperCase().equals("FIREFOX")) {
+			user.launchFirefoxBrowser();
+		}
+	}
+
+	@When("user navigates using URL '(.*)'")
+	public void whenUserNavigatesUsingUrl(String url) {
+		user.navigateToUrl(url);
+	}
+
+	@Then("user clicks on the link '(.*)'")
+	public void thenUserClicksOnTheLink(String link) {
+		user.clicksOnLinkByText(link);
+	}
+
+	@And("user closes all the open browsers")
+	public void andUserClosesAllTheOpenBrowsers() {
+		user.closeAllBrowsers();
+	}
 
 }

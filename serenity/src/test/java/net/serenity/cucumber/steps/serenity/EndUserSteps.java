@@ -8,10 +8,13 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.hasItem;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class EndUserSteps {
 
@@ -29,6 +32,7 @@ public class EndUserSteps {
 
     	driver = new ChromeDriver(options);
     	driver.manage().window().maximize();
+    	driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
     }
 
     @Step
@@ -43,6 +47,14 @@ public class EndUserSteps {
 
 	public void closeAllBrowsers() {
 		driver.quit();
+	}
+
+	public void launchFirefoxBrowser() {
+		System.setProperty("webdriver.gecko.driver",System.getProperty("user.dir")+"/src/test/resources/drivers/geckodriver.exe");
+		
+		driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
 	}
     
     
